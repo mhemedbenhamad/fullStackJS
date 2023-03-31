@@ -1,23 +1,13 @@
 const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const connBaseDonnees = require("./configuration/connBDonnees");
-const routesEtudiants = require("./api/apiAdminEtudiants/routesEtudiants");
-
+const db = require("./models");
+const Routes = require("./routers/etudiant-router");
 // creer l'application express
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors({ origin: true, credentials: true }));
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 //Ajouter les  routes
-app.use("/TEtudiants", routesEtudiants);
-
-//Se connecter a la base de donnees
-console.log("ouvrireBaseDeDonnees");
-connBaseDonnees.ouvrireBaseDeDonnees;
-
-// Demarrer l'ecoute sur le port 8080
-app.listen(8080, () => {
-  console.log("Serveur à l'écoute port 8080");
+app.use("/TEtudiants", Routes);
+// Demarrer l'ecoute sur le port 3000
+db.sequelize.sync().then(() => {
+  app.listen(3000, () => console.log("serveur en écoute port 3000"));
 });

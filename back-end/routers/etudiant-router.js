@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const db = require(".././models");
+const db = require("../models");
 
 //Ajouter un nouvel etudiant
-router.post("/createEtudiant", (req, res, next) => {
+router.post("/data", (req, res, next) => {
   db.TEtudiants.create({
     Nom: req.body.Nom,
     Prenom: req.body.Prenom,
@@ -18,21 +18,21 @@ router.post("/createEtudiant", (req, res, next) => {
 });
 
 //Recuperer un etudiant par son ID
-router.get("/etudiant:id", (req, res, next) => {
+router.get("/data/:id", (req, res, next) => {
   db.TEtudiants.findOne({ where: { id: req.params.id } })
     .then((response) => res.status(200).send(response))
     .catch((err) => res.status(400).send(err));
 });
 
 //Recuperer les etudiants
-router.get("/etudiants", (req, res, next) => {
+router.get("/data", (req, res, next) => {
   db.TEtudiants.findAll()
     .then((response) => res.status(200).send(response))
     .catch((err) => res.status(400).send(err));
 });
 
 //Mettre a jour l'etudiant identifie par son ID
-router.patch("/etudiants/:id", (req, res, next) => {
+router.patch("/data/:id", (req, res, next) => {
   db.TEtudiants.update(
     {
       Nom: req.body.Nom,
@@ -50,7 +50,7 @@ router.patch("/etudiants/:id", (req, res, next) => {
 });
 
 //Supprimer/Archiver l'etudiant identifie par son id
-router.delete("/etudiants/:id", (req, res, next) => {
+router.delete("/data/:id", (req, res, next) => {
   db.TEtudiants.destroy({ where: { id: req.params.id } })
     .then((response) => res.status(200).send(response))
     .catch((err) => res.status(400).send(err));

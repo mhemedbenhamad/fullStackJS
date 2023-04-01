@@ -6,8 +6,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //Ajouter les  routes
-app.use("/TEtudiants", Routes);
+app.use("/", Routes);
 // Demarrer l'ecoute sur le port 3000
 db.sequelize.sync().then(() => {
-  app.listen(3000, () => console.log("serveur en écoute port 3000"));
+  app.listen(8080, () => console.log("serveur en écoute port 8080"));
 });

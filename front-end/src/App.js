@@ -1,11 +1,7 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Acceuil from "./Acceuil";
-import Apropos from "./Apropos";
-import Etudiant from "./Etudiant";
-import Enseignants from "./Enseignants";
-import Navbar from "./Navbar";
-function App() {
+import { Acceuil, Enseignants, Etudiant, Apropos, Navbar } from "./pages/index";
+
+const App = () => {
   return (
     <div className="App">
       <Router>
@@ -20,6 +16,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;

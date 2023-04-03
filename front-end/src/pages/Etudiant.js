@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 function Etudiant() {
   var [listEtudiant, setListEtudiant] = useState([]);
   async function selectEtudiants() {
-    let apiUrl = "http://127.0.0.1:3000/data";
+    let apiUrl = "http://127.0.0.1:8080/data";
     console.warn(apiUrl);
     let result = await fetch(apiUrl, {
       method: "GET",

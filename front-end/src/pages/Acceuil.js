@@ -1,5 +1,3 @@
-import React from "react";
-
 function Acceuil() {
   return <h1>Acceuil</h1>;
 }
